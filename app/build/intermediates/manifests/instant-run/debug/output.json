@@ -1,1 +1,0 @@
-[{"outputType":{"type":"INSTANT_RUN_MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"Beta 1.1.0-472-dev","enabled":true,"outputFile":"debug-Beta 1.1.0-472-dev.apk","fullName":"debug","baseName":"debug"},"path":"AndroidManifest.xml","properties":{"packageId":"com.otamate.android.theapkversionprocess.debug","split":"","minSdkVersion":"19"}}]
