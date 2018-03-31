@@ -1,0 +1,32 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+/*
+ * Copyright (c) 2018 OTAMate Technology Ltd. All Rights Reserved.
+ * http://www.otamate.com
+ */
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://maven.google.com" }
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath group: 'org.tmatesoft.svnkit', name: 'svnkit', version: '1.8.10'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
