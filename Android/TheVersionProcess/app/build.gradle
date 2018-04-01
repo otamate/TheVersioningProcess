@@ -5,7 +5,7 @@ import org.tmatesoft.svn.core.wc.*
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.otamate.android.theapkversionprocess"
+        applicationId "com.otamate.android.theversionprocess"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
@@ -14,7 +14,7 @@ android {
 
         ext.CMRevNumber = getSvnRevision()
         ext.CIBuildNumber = System.getenv("BUILD_NUMBER") ?: "dev"
-        versionName "Beta 1.1.0-$CMRevNumber-$CIBuildNumber"
+        versionName "Beta-1.1.0-$CMRevNumber-$CIBuildNumber"
     }
 
     buildTypes {
@@ -33,7 +33,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "${variant.name}-${variant.versionName}.apk"
+            outputFileName = getAppName() + "-${variant.name}-${variant.versionName}.apk"
         }
     }
 }
@@ -45,6 +45,11 @@ def getSvnRevision(){
     SVNStatus status = statusClient.doStatus(projectDir, false)
     SVNRevision revision = status.getRevision()
     return revision.getNumber()
+}
+
+def getAppName() {
+    def stringsFile = android.sourceSets.main.res.sourceFiles.find { it.name.equals "strings.xml" }
+    return new XmlParser().parse(stringsFile).string.find { it.@name.equals "app_name" }.text()
 }
 
 dependencies {
