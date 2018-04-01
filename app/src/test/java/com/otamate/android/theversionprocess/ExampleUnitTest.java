@@ -1,4 +1,4 @@
-package com.otamate.android.theapkversionprocess;
+package com.otamate.android.theversionprocess;
 
 import org.junit.Test;
 
