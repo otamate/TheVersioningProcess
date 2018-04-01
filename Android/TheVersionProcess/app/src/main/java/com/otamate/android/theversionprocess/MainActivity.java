@@ -1,4 +1,4 @@
-package com.otamate.android.theapkversionprocess;
+package com.otamate.android.theversionprocess;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
