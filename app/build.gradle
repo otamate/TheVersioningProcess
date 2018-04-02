@@ -33,7 +33,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = getAppName() + "-${variant.name}-${variant.versionName}.apk"
+            outputFileName = getAppNameFromResource() + "-${variant.name}-${variant.versionName}.apk"
         }
     }
 }
@@ -47,9 +47,17 @@ def getSvnRevision(){
     return revision.getNumber()
 }
 
-def getAppName() {
-    def stringsFile = android.sourceSets.main.res.sourceFiles.find { it.name.equals "strings.xml" }
-    return new XmlParser().parse(stringsFile).string.find { it.@name.equals "app_name" }.text()
+def getAppNameFromResource() {
+    def stringResources = android.sourceSets.main.res.sourceFiles.find {
+        it.name in ['strings.xml']
+    }
+
+    XmlParser parser = new XmlParser()
+    String appName = parser.parse(stringResources).string.find {
+        it.@name in ['app_name']
+    }.text()
+
+    return appName
 }
 
 dependencies {
